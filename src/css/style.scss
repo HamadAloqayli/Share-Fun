@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import 'variables';
+@import 'mixins';
+@import 'Login';
+@import 'Navbar';
+@import 'Profile';
+@import 'Movies';
+@import 'Groups';
+
+*,*::before,*::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html
+{
+    scroll-behavior: smooth;
+}
+body
+{
+    font-family: 'Roboto', sans-serif;
+}
+.pageName
+{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    h1
+    {
+        padding: 0;
+        margin: 0;
+        font-size: 30px;
+    }
+}
+.selection
+{
+    ul
+    {
+        @include flexContent(row,center,center);
+    }
+    ul li
+    {
+        list-style-type: none;
+        margin: 0 30px;
+    }
+    span
+    {
+        font-weight: normal;
+        font-size: 1.3rem;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+}

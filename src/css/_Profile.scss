@@ -1,0 +1,68 @@
+.profileHero
+{
+    background-color: $lightBG;
+    color: $textColor;
+    @include flexContent(row,center,center);
+    min-height: 87vh;
+
+    .profileContainer
+    {
+        background-color: $darkBG;
+        @include flexContent(column,center,center);
+        border-radius: 20px;
+        padding: 30px 50px;
+        width: 100%;
+        max-width: 400px;
+        position: relative;
+
+        span
+        {
+            margin-right: auto;
+        }
+        p
+        {
+            background-color: $white;
+            color: $darkBG;
+            border-radius: 15px;
+            width: 80%;
+            text-align: center;
+        }
+        .resetPassword
+        {
+            background-color: $white;
+            color: $darkBG;
+            text-align: center;
+
+            width: auto;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+    } 
+    .modal
+    {
+        color: $darkBG !important;
+
+        .modal-footer .btn:first-child
+        {
+            background-color: $gray;
+            color: $white;
+            
+            &:hover
+            {
+                background-color: darken($color: $gray, $amount: 5);
+            }
+        }
+        .modal-footer .btn:last-child
+        {
+            background-color: $primary;
+            color: $white;
+            
+            &:hover
+            {
+                background-color: darken($color: $primary, $amount: 5);
+            }
+        }
+
+    }  
+}

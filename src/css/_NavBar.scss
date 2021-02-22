@@ -1,0 +1,122 @@
+nav
+{
+
+    min-height: 13vh;
+    background-color: $darkBG !important;
+    color: $textColor !important;
+
+    .navbar-toggler
+    {
+        background-color: transparent !important;
+        color: $textColor !important;
+        outline: 0 !important;
+        border: 0 !important;
+
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 25 25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(244,244,244)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    }
+
+    .btn:focus,.btn:active {
+        outline: none !important;
+        box-shadow: none;
+     }
+
+    button
+    {
+        background-color: transparent;
+        border: 2px solid $primary !important;
+        color: $primary !important;
+        width: 100px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover
+        {
+            background-color: $primary;
+            color: $textColor !important;
+            outline: 0 !important;
+
+        }
+
+    }
+
+    .dropdown
+    {        
+        .dropdown-menu
+        {
+            left: auto;
+            right: 0;
+            margin-right: -16px;
+
+           a:active {
+               color: black !important;
+                background: none !important;           
+            }
+        }
+        .dropdown-item
+        {
+            padding: 5px 0;
+        }
+        .userBtn
+        {
+            border: none !important;
+            color: $textColor !important;
+            background-color: transparent;
+            font-size: 18px;
+            width: auto;
+            vertical-align: baseline;
+            margin: 0;
+            padding: 0;
+        }
+        .logOutBtn
+        {
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+            border: 2px solid $primary1 !important;
+            color: $primary1 !important;
+
+            &:hover
+            {
+                background-color: $primary1;
+                color: $textColor !important;
+                outline: 0 !important;
+            }
+        }
+        a
+        {
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
+
+@media (max-width: 767.98px) {
+    
+        nav
+        {
+        .dropdown
+        {
+            text-align: center !important;
+            min-height: 10vh;
+            margin: auto !important;
+
+            .dropdown-menu
+            {
+                left: 50%;
+                right: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+
+    .DD
+    {
+        text-align: center !important;
+        min-height: 10vh;
+        margin: auto !important;
+    }
+
+}

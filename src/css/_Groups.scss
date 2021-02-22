@@ -1,0 +1,243 @@
+.groupsHero
+{
+    width: 100%;
+    min-height: 100vh;
+    background-color: $lightBG;
+
+    .groupsContainer
+    {
+
+        .parentAlert
+        {
+            position: sticky;
+            top: 15%;
+            left: 100%;
+            z-index: 999 !important;
+            text-align: center;
+            
+            .alert
+            {
+                z-index: 999 !important;
+                display: inline-block;
+            }
+        }
+        .groupCardHolder
+        {
+            width: 300px;
+            height: 450px;
+            overflow: hidden;
+            position: relative;
+
+
+            .groupCard
+            {
+                position: absolute;
+                top: 0;
+                left: 100%;
+                transition: all 0.3s ease-in-out;
+                cursor: pointer;
+
+                &:hover
+                {
+                    background-color: $white;
+
+                    p,span
+                    {
+                        color: $darkBG;
+                    }
+                    p::after
+                    {
+                        background-color: $darkBG;
+                    }
+                }
+            }
+            .groupCard:last-child
+            {
+                position: absolute;
+                top: 0;
+                left: 100%;
+                transition: all 0.3s ease-in-out;
+                cursor: pointer;
+
+                &:hover
+                {
+                    background-color: $darkBG;
+
+                    p,span
+                    {
+                        color: $textColor;
+                    }
+                    p::after
+                    {
+                        background-color: $textColor;
+                    }
+                }
+            }
+            .groupCardAdd,.groupCardAdd1
+            {
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition: all 0.3s ease-in-out;
+            }
+            .groupCardForm
+            {
+                @include flexContent(column,center !important,center);
+            }
+
+            input
+            {
+                width: 200px;
+            }
+            button
+            {
+                display: block;
+                width: 100px;
+                background-color: transparent;
+                border: 2px solid $gray;
+                color: $gray;
+                transition: all 0.2s ease-in-out;
+
+                &:hover
+                {
+                    border: 2px solid $primary;
+                    color: $primary;
+                }
+            }
+            .listOfUsers
+            {
+                width: 100%;
+                overflow-y: auto;
+                text-align: center;
+                
+                /* width */
+                &::-webkit-scrollbar {
+                    width: 5px;
+                }
+                
+                /* Track */
+                &::-webkit-scrollbar-track {
+                    background: #f1f1f1;
+                }
+                
+                /* Handle */
+                &::-webkit-scrollbar-thumb {
+                    background: #888;
+                }
+                
+                /* Handle on hover */
+                &::-webkit-scrollbar-thumb:hover {
+                    background: #555;
+                }
+                span
+                {
+                    display: block;
+                    margin: 0 auto 15px auto;
+
+                    &:first-child
+                    {
+                        margin-top: 10px;
+                    }
+                }
+            }
+
+        }
+        .col .groupCard
+        {
+            width: 300px;
+            height: 450px;
+            background-color: $darkBG;
+            border-radius: 15px;
+            margin: auto;
+            @include flexContent(column,flex-start,center);
+
+            p
+            {
+                color: $textColor;
+                font-size: 2.2rem;
+                padding-top: 50px;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+        .groupCardAdd1
+        {
+            transition: all 0.5s ease-in-out;
+        }
+        .groupCardAdd
+        {
+            @include flexContent(column,center !important,center);
+            cursor: pointer;
+            transition: all 0.5s ease-in-out;
+
+            &:hover
+            {
+                background-color: $white;
+                
+                svg,p
+                {
+                    color: $darkBG;
+                }
+            }
+
+            svg
+            {
+                width: 150px;
+                height: 150px;
+                color: $white;
+                transition: all 0.2s ease-in-out;
+            }
+            p
+            {
+                color: $textColor;
+                font-size: 2rem !important;
+                padding-top: 30px;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+        .usersGroup
+        {
+            
+            p::after
+            {
+                content: '';
+                display: block;
+                height: 2px;
+                background-color: $white;
+            }
+            span
+            {
+                color: $textColor;
+                font-size: 1.2rem;
+            }
+            .inviteUser p
+            {
+                font-size: 1rem !important;
+                padding-top: 20px;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+
+                &:hover
+                {
+                    color: $primary;
+                }
+
+                &::after
+                {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid $gray;
+    outline: 0;
+    font-size: 1rem;
+    color: $white;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+  }

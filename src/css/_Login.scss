@@ -1,0 +1,166 @@
+.loginHero
+{
+    background-color: $lightBG;
+    color: $textColor;
+    @include flexContent(row,center,center);
+    min-height: 87vh;
+
+    .loginContainer
+    {
+        background-color: $darkBG;
+        @include flexContent(column,center,center);
+        border-radius: 20px;
+        padding: 30px 50px;
+        width: 100%;
+        max-width: 500px;
+        position: relative;
+
+        form
+        {
+            @include flexContent(column,flex-start,flex-start);
+            width: 90%;
+
+            .logupBtn
+            {
+              color:"#9b9b9b";
+              text-decoration: none;
+
+              &:hover
+              {
+                color: $primary !important;
+              }
+            }
+
+            input[type="submit"]
+            {
+                display: block;
+                margin: auto;
+                width: 100px;
+                background-color: transparent;
+                border: 2px solid $gray;
+                color: $gray;
+                transition: all 0.2s ease-in-out;
+
+                &:hover
+                {
+                    border: 2px solid $primary;
+                    color: $primary;
+                }
+            }
+        }
+
+    }
+}
+.swichPage
+{
+  font-size: 0.9rem;
+}
+
+.form__group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 50%;
+  }
+  
+  .form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid $gray;
+    outline: 0;
+    font-size: 1rem;
+    color: $white;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+  
+    &::placeholder {
+      color: transparent;
+    }
+  
+    &:placeholder-shown ~ .form__label {
+      font-size: 1.2rem;
+      cursor: text;
+      top: 20px;
+    }
+  }
+  
+  .form__label {
+    position: absolute;
+    top: -10px;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: $gray;
+  }
+  
+  .form__field:focus {
+    ~ .form__label {
+      position: absolute;
+      top: -10px;
+      display: block;
+      transition: 0.2s;
+      font-size: 1rem;
+      color: $primary;
+      font-weight:300;    
+    }
+    padding-bottom: 6px;  
+    font-weight: 50;
+    border-width: 2px;
+    border-image: linear-gradient(to right, $primary,$secondary);
+    border-image-slice: 1;
+  }
+  /* reset input */
+  .form__field{
+    &:required,&:invalid { box-shadow:none; }
+  }
+.radioHolder
+{
+    width: 90%;
+    margin: auto;
+    @include flexContent(row,space-around,center)
+}
+  input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid $white;
+}
+.radioHolder label, .radioHolder input
+{
+    cursor: pointer;
+}
+input[id='radio1']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: $primary;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid $white;
+}
+input[id='radio2']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: $primary1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid $white;
+}
