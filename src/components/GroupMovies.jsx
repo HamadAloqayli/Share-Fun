@@ -3,6 +3,7 @@ import axios from 'axios';
 import { MdStar } from "react-icons/md";
 import {v4 as uuidv4} from 'uuid';
 import { BiError } from 'react-icons/bi';
+import deleteIcon from '../img/delete.png';
 
 const GroupMovies = (props) => {
 
@@ -28,8 +29,14 @@ const GroupMovies = (props) => {
         <div className="moviesHero text-center">
             <div className="moviesContainer text-center py-4 px-lg-5 container-fluid">
                     <div className="row text-center py-4 px-lg-5">
-                            {(movies.length !== 0)?movies.map(movie => (
+                            {(movies.length !== 0)?movies.sort((a,b) => {
+                            if(a.data().createdAt > b.data().createdAt)
+                                return -1;
+                            else
+                                return 1;
+                        }).map(movie => (
                                 <div className="movieCard my-4 text-center col position-relative" key={uuidv4()}>
+                                    {(movie.data().createdBy === user.uid) && <div className="deleteOption"><img src={deleteIcon} /></div>}
                                     <div className="text-center MCSon">
                                         <img src={`https://image.tmdb.org/t/p/w300/${movie.data().poster_path}`} alt=""/>
                                         <p className="movieDetail">{movie.data().title}</p>

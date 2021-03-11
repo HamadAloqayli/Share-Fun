@@ -94,19 +94,19 @@ const NavBar = () => {
             <div className="my-3 mx-0 ml-auto">
 
                 <div className="dropdown text-right mr-5">
-                    <button className="btn btn-secondary text-center dropdown-toggle userBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src={(userData.gender === "Male")?profileImgMale:profileImgFemale} alt=""/>
-                        <span className="mx-2">{userData.username}</span>
-                    </button>
-                    <div className="dropdown-menu mt-3" aria-labelledby="dropdownMenuButton">
-                        <Link className="dropdown-item" to="/Groups"><MdGroup className="ml-4 mr-2 mb-1" style={iconsStyle} /> Groups</Link>
-                        <Link className="dropdown-item" to="/Favorite"><MdStar className="ml-4 mr-2 mb-1" style={iconsStyle} />Favorite</Link>
-                        <Link className="dropdown-item" to="/Profile"><MdPerson className="ml-4 mr-2 mb-1" style={iconsStyle} />Profile</Link>
-                        <div className="dropdown-divider"></div>
-                            <Link className="dropdown-item text-center" to="/"><button onClick={() => auth.signOut()} className="btn logOutBtn" >Logout</button></Link>
-                    </div>
-                </div>
+                        <button className="btn btn-secondary text-center dropdown-toggle userBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src={(userData.gender === "Male")?profileImgMale:profileImgFemale} alt=""/>
+                            <span className="mx-2">{userData.username}</span>
+                        </button>
+                        <div className="dropdown-menu mt-3" aria-labelledby="dropdownMenuButton">
+                            <Link className="dropdown-item" to="/Groups"><MdGroup className="ml-4 mr-2 mb-1" style={iconsStyle} /> Groups</Link>
+                            <Link className="dropdown-item" to="/Favorite"><MdStar className="ml-4 mr-2 mb-1" style={iconsStyle} />Favorite</Link>
+                            <Link className="dropdown-item" to="/Profile"><MdPerson className="ml-4 mr-2 mb-1" style={iconsStyle} />Profile</Link>
+                            <div className="dropdown-divider"></div>
+                                <Link className="dropdown-item text-center" to="/"><button onClick={() => auth.signOut()} className="btn logOutBtn" >Logout</button></Link>
+                        </div>
 
+                </div>
             </div>
         </div>
 </nav>

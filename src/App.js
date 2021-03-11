@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
-import {auth,firestore,storage} from './Firebase';
+import firebase, {auth,firestore,storage} from './Firebase';
 import Home from './components/Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -63,11 +63,10 @@ function App() {
 
 
   return (
-    <userContext.Provider value={{user,setUser,userData,setUserData,getUserData,auth,firestore,storage,selection,setSelection}}>
+    <userContext.Provider value={{user,setUser,userData,setUserData,getUserData,firebase,auth,firestore,storage,selection,setSelection}}>
         <Router>
               <Route path="/" component={NavBar} />
           <Switch>
-
               <Route exact path="/" component={Home} />
               <Route exact path="/Login" component={Login} />
               <Route exact path="/Signup" component={Signup} />

@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import {userContext} from '../contexts/userContext';
 import {IoAddCircleOutline} from 'react-icons/io5';
 import {BsArrowLeft} from 'react-icons/bs';
+import explore from '../img/explore.png';
 import { v4 as uuidv4 } from 'uuid';
 
 const Groups = () => {
@@ -13,7 +14,7 @@ const Groups = () => {
     const [updateData,setUpdateData] = useState(true);
     const [errMessage,setErrMessage] = useState('');
     const [sucMessage,setSucMessage] = useState('');
-    const {user,setUser,userData,setUserData,getUserData,auth,firestore} = useContext(userContext);
+    const {user,setUser,userData,setUserData,getUserData,firebase,auth,firestore} = useContext(userContext);
 
     const groupName = useRef('');
     const userNames = useRef([]);
@@ -112,8 +113,11 @@ const Groups = () => {
         {
             if(groups.length === 0)
             {
+                console.log(user.uid);
                 firestore.collection("Groups").add({
-                    name: gName
+                    name: gName,
+                    createdBy: user.uid,
+                    createdAt: new Date().getTime()
                 })
                 .then((docRef) => {
                     
@@ -142,7 +146,9 @@ const Groups = () => {
                 if(!found.includes(true))
                 {
                     firestore.collection("Groups").add({
-                        name: gName
+                        name: gName,
+                        createdBy: user.uid,
+                        createdAt: new Date().getTime()
                     })
                     .then((docRef) => {
                         
@@ -304,7 +310,6 @@ const Groups = () => {
                     {(!loadingData)?groups.map(group => (
                                 <div key={uuidv4()} className="col my-4 d-flex justify-content-center">
                                     <div className="groupCardHolder">
-                                        <Link to={`/Group/${group.id}`}>
                                             <div className="groupCard groupCardAdd1 usersGroup">
                                                     <p>{group.data().name}</p>
 
@@ -316,9 +321,14 @@ const Groups = () => {
                                                         ))}
                                                     </div>
 
-                                                    <div className="inviteUser" onClick={() => getForm(group.data().name)}>
-                                                    <p>+ Invite user</p>
+                                                    <div className="inviteUser">
+                                                        <p onClick={() => getForm(group.data().name)}>+ Invite user</p>
                                                     </div>
+                                                        <div className="exploreG">
+                                                            <Link to={`/Group/${group.id}`}>
+                                                                <img src={explore} alt=""/>
+                                                            </Link>
+                                                        </div>
                                                     </div>
                                                     <div ref={(element) => userForms.current.push(element)} data-type={group.data().name} className="groupCard groupCardForm addUserGroup">
                                                     <BsArrowLeft onClick={() => removeForm(group.data().name)} style={leftIcon} />
@@ -327,11 +337,9 @@ const Groups = () => {
                                                     <button className="form-control mt-4" onClick={() => addUser(group.data().name)}>invite</button>
                                                     
                                                     </div>
-                                            </Link>
                                         </div>
                                   </div>
                                             )):<h1>loading...</h1>}
-
 
                         <div className="col my-4 d-flex justify-content-center">
                             <div className="groupCardHolder">
@@ -344,7 +352,6 @@ const Groups = () => {
                                     <p>Group name</p>
                                     <input ref={groupName} type="text" className="form__field" />
                                     <button className="form-control mt-4" onClick={addGroup}>create</button>
-
                                 </div>
                             </div>
                         </div>

@@ -163,7 +163,9 @@ const Series = () => {
                     id: movie.id,
                     poster_path: movie.poster_path,
                     title: movie.name,
-                    vote_average: movie.vote_average
+                    vote_average: movie.vote_average,
+                    createdBy: user.uid,
+                    createdAt: new Date().getTime()
                 })
                 .then(res => {
                     hideGroups(movie);
@@ -197,7 +199,9 @@ const Series = () => {
                         id: movie.id,
                         poster_path: movie.poster_path,
                         title: movie.name,
-                        vote_average: movie.vote_average
+                        vote_average: movie.vote_average,
+                        createdBy: user.uid,
+                        createdAt: new Date().getTime()
                     })
                     .then(res => {
                         tempShowMessage(`${movie.name} series added successfuly to favorite`,'suc');

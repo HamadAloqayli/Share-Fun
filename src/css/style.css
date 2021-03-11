@@ -715,19 +715,6 @@ nav .dropdown a {
   left: 100%;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  cursor: pointer;
-}
-
-.groupsHero .groupsContainer .groupCardHolder .groupCard:hover {
-  background-color: #f4f4f4;
-}
-
-.groupsHero .groupsContainer .groupCardHolder .groupCard:hover p, .groupsHero .groupsContainer .groupCardHolder .groupCard:hover span {
-  color: #2B2B2B;
-}
-
-.groupsHero .groupsContainer .groupCardHolder .groupCard:hover p::after {
-  background-color: #2B2B2B;
 }
 
 .groupsHero .groupsContainer .groupCardHolder .groupCard:last-child {
@@ -798,6 +785,7 @@ nav .dropdown a {
   width: 100%;
   overflow-y: auto;
   text-align: center;
+  height: 200px;
   /* width */
   /* Track */
   /* Handle */
@@ -920,7 +908,8 @@ nav .dropdown a {
 
 .groupsHero .groupsContainer .usersGroup .inviteUser p {
   font-size: 1rem !important;
-  padding-top: 20px;
+  padding-top: 0;
+  margin-top: 30px;
   cursor: pointer;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -932,6 +921,14 @@ nav .dropdown a {
 
 .groupsHero .groupsContainer .usersGroup .inviteUser p::after {
   display: none;
+}
+
+.groupsHero .groupsContainer .usersGroup .exploreG {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .form__field {
@@ -946,6 +943,21 @@ nav .dropdown a {
   background: transparent;
   -webkit-transition: border-color 0.2s;
   transition: border-color 0.2s;
+}
+
+.deleteOption {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translatex(-50%);
+          transform: translatex(-50%);
+  cursor: pointer !important;
+  background-color: #2B2B2B;
+  opacity: 0.95;
+  -webkit-clip-path: circle(50% at 50% 0);
+          clip-path: circle(50% at 50% 0);
+  width: 60px;
+  height: 60px;
 }
 
 *, *::before, *::after {
@@ -971,7 +983,7 @@ body {
           transform: translateX(-50%);
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: auto;
 }
 
 .pageName h1 {
@@ -1006,5 +1018,11 @@ body {
   font-size: 1.3rem;
   margin-left: 10px;
   cursor: pointer;
+}
+
+@media (max-width: 767.98px) {
+  .pageName {
+    z-index: 999;
+  }
 }
 /*# sourceMappingURL=style.css.map */

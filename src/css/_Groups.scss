@@ -35,21 +35,6 @@
                 top: 0;
                 left: 100%;
                 transition: all 0.3s ease-in-out;
-                cursor: pointer;
-
-                &:hover
-                {
-                    background-color: $white;
-
-                    p,span
-                    {
-                        color: $darkBG;
-                    }
-                    p::after
-                    {
-                        background-color: $darkBG;
-                    }
-                }
             }
             .groupCard:last-child
             {
@@ -109,6 +94,7 @@
                 width: 100%;
                 overflow-y: auto;
                 text-align: center;
+                height: 200px;
                 
                 /* width */
                 &::-webkit-scrollbar {
@@ -212,7 +198,8 @@
             .inviteUser p
             {
                 font-size: 1rem !important;
-                padding-top: 20px;
+                padding-top: 0;
+                margin-top: 30px;
                 cursor: pointer;
                 transition: all 0.2s ease-in-out;
 
@@ -225,6 +212,13 @@
                 {
                     display: none;
                 }
+            }
+            .exploreG
+            {
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
     }
@@ -241,3 +235,16 @@
     background: transparent;
     transition: border-color 0.2s;
   }
+  .deleteOption
+  {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translatex(-50%);
+    cursor: pointer !important;
+    background-color: $darkBG;
+    opacity: 0.95;
+    clip-path: circle(50% at 50% 0);
+    width: 60px;
+    height: 60px;
+}

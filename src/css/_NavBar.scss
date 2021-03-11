@@ -5,6 +5,7 @@ nav
     background-color: $darkBG !important;
     color: $textColor !important;
 
+
     .navbar-toggler
     {
         background-color: transparent !important;
@@ -42,7 +43,7 @@ nav
     }
 
     .dropdown
-    {        
+    {       
         .dropdown-menu
         {
             left: auto;
@@ -112,11 +113,11 @@ nav
         }
     }
 
-    .DD
-    {
-        text-align: center !important;
-        min-height: 10vh;
-        margin: auto !important;
-    }
+        .DD
+        {
+            text-align: center !important;
+            min-height: 10vh;
+            margin: auto !important;
+        }
 
 }
