@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import {userContext} from '../contexts/userContext';
 import {IoAddCircleOutline} from 'react-icons/io5';
 import {BsArrowLeft} from 'react-icons/bs';
+import {TiDelete} from 'react-icons/ti';
 import explore from '../img/explore.png';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -273,6 +274,17 @@ const Groups = () => {
         }
       }
 
+      const deleteGroup = async (group) => {
+
+       await firestore.collection('Groups').doc(group.id).delete()
+        .then(res => tempShowMessage(`${group.data().name} group was deleted successfully`,'suc'))
+        .catch(res => tempShowMessage('something went wrong!','err'))
+
+        resetData();
+        getGroupsAndUsers(user);
+        setLoadingData(false);
+      }
+
       const tempShowMessage = (msg,type) => {
 
         (type === 'suc')?setSucMessage(msg):setErrMessage(msg);
@@ -307,10 +319,16 @@ const Groups = () => {
             </div>
                     <div className="row justify-content-center align-items-center">
                         
-                    {(!loadingData)?groups.map(group => (
+                    {(!loadingData)?groups.sort((a,b) => {
+                            if(a.data().createdAt > b.data().createdAt)
+                                return -1;
+                            else
+                                return 1;
+                        }).map(group => (
                                 <div key={uuidv4()} className="col my-4 d-flex justify-content-center">
                                     <div className="groupCardHolder">
                                             <div className="groupCard groupCardAdd1 usersGroup">
+                                            {(group.data().createdBy === user.uid) && <TiDelete onClick={() => deleteGroup(group)} style={leftIcon} />}
                                                     <p>{group.data().name}</p>
 
                                                     <div className="listOfUsers">
