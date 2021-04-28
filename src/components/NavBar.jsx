@@ -7,6 +7,7 @@ import movieIcon from '../img//movie.png';
 import songIcon from '../img/song.png';
 import profileImgMale from '../img/profileImg_male.png';
 import profileImgFemale from '../img/profileImg_female.png';
+import { MdHome } from 'react-icons/md';
 import { MdGroup } from "react-icons/md";
 import { MdStar } from "react-icons/md";
 import { MdPerson } from "react-icons/md";
@@ -99,9 +100,10 @@ const NavBar = () => {
                             <span className="mx-2">{userData.username}</span>
                         </button>
                         <div className="dropdown-menu mt-3" aria-labelledby="dropdownMenuButton">
-                            <Link className="dropdown-item" to="/Groups"><MdGroup className="ml-4 mr-2 mb-1" style={iconsStyle} /> Groups</Link>
-                            <Link className="dropdown-item" to="/Favorite"><MdStar className="ml-4 mr-2 mb-1" style={iconsStyle} />Favorite</Link>
-                            <Link className="dropdown-item" to="/Profile"><MdPerson className="ml-4 mr-2 mb-1" style={iconsStyle} />Profile</Link>
+                            <Link className="dropdown-item" to="/"><MdHome className="ml-4 mr-3 mb-1" style={iconsStyle} />Home</Link>
+                            <Link className="dropdown-item" to="/Groups"><MdGroup className="ml-4 mr-3 mb-1" style={iconsStyle} />Groups</Link>
+                            <Link className="dropdown-item" to="/Favorite"><MdStar className="ml-4 mr-3 mb-1" style={iconsStyle} />Favorite</Link>
+                            <Link className="dropdown-item" to="/Profile"><MdPerson className="ml-4 mr-3 mb-1" style={iconsStyle} />Profile</Link>
                             <div className="dropdown-divider"></div>
                                 <Link className="dropdown-item text-center" to="/"><button onClick={() => auth.signOut()} className="btn logOutBtn" >Logout</button></Link>
                         </div>

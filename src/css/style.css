@@ -636,26 +636,58 @@ nav .dropdown a {
   background-color: transparent !important;
 }
 
-.moviesHero nav ul a {
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
-  border-radius: 7.5px !important;
-  background-color: transparent;
-  color: #f4f4f4;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+.moviesHero nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.moviesHero nav ul li, .moviesHero nav ul .btnClassName {
+  margin: auto 3px;
+  border-radius: 7.5px;
   cursor: pointer;
+  list-style: none;
 }
 
-.moviesHero nav ul a.hideBorder {
-  border: none !important;
-  font-size: 1.3rem;
+.moviesHero nav ul li:hover, .moviesHero nav ul .btnClassName:hover {
+  background-color: #9b9b9b;
 }
 
-.moviesHero nav ul a:hover {
-  background-color: #f4f4f4 !important;
-  color: #3C3C3C !important;
+.moviesHero nav ul li a, .moviesHero nav ul .btnClassName a {
+  display: block;
+  outline: none;
+  padding: 3px 10px;
+  color: #f4f4f4;
+  text-decoration: none;
+}
+
+.moviesHero nav ul li .selected:active, .moviesHero nav ul .btnClassName .selected:active {
+  border: none;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.moviesHero nav ul .pClassName {
+  display: none;
+}
+
+.moviesHero nav ul .nClassName {
+  display: none;
+}
+
+.moviesHero nav ul .activeClassName {
+  background-color: #2B2B2B;
 }
 
 .moviesHero .searchMovie {
@@ -990,6 +1022,10 @@ body {
   padding: 0;
   margin: 0;
   font-size: 30px;
+}
+
+.selection {
+  width: 305px;
 }
 
 .selection ul {

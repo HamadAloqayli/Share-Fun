@@ -7,7 +7,8 @@ import {BsArrowLeft} from 'react-icons/bs';
 import { v4 as uuidv4 } from 'uuid';
 import {userContext} from '../contexts/userContext';
 import { Link } from 'react-router-dom';
-
+import ReactPaginate from 'react-paginate';
+import {AiOutlineVerticalLeft,AiOutlineVerticalRight,AiOutlineLeft,AiOutlineRight} from 'react-icons/ai';
 
 const Series = () => {
 
@@ -17,12 +18,14 @@ const Series = () => {
     const [groups,setGroups] = useState([]);
     const [errMessage,setErrMessage] = useState('');
     const [sucMessage,setSucMessage] = useState('');
+    const [pageCount,setPageCount] = useState(0);
 
     const {user,setUser,userData,setUserData,getUserData,auth,firestore} = useContext(userContext);
 
     const inputMovie = useRef('');
     const groupsList = useRef([]);
     const menusList = useRef([]);
+    const paginate = useRef('');
 
     useEffect(() => {
 
@@ -60,23 +63,23 @@ const Series = () => {
     const getPopularMovie = () => {
 
         axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${tmdbKey}&page=${currentPage}`)
-        .then(res => {console.log(res.data); setMovies(res.data.results)})
+        .then(res => {console.log(res.data); setMovies(res.data.results); setPageCount(res.data.total_pages)})
         .catch(res => console.log(res));
     }
 
     const getMovie = () => {
 
         let findMovie = inputMovie.current.value;
+        handlePageChanging(1);
 
         if(findMovie.trim() !== '')
         {
             axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${tmdbKey}&query=${findMovie}&page=1`)
-            .then(res => {console.log(res.data); setMovies(res.data.results)})
+            .then(res => {console.log(res.data); setMovies(res.data.results); setPageCount(res.data.total_pages)})
             .catch(res => console.log(res));
         }
         else
         {
-            setCurrentPage(1);
             getPopularMovie();
         }
 
@@ -219,6 +222,20 @@ const Series = () => {
             tempShowMessage(<><Link to="/Login" className="loginBTN btn btn-link">Login</Link> <span>to use this feature</span></>,'err')
     }
 
+    const handleChangePage = ({selected}) => {
+
+        setCurrentPage(selected+1);
+    }
+    const handlePageChanging = (selected) => {
+        console.log(selected);
+        if(selected > 0 && selected < pageCount+1)
+        {
+        setCurrentPage(selected);
+        paginate.current.state.selected = selected-1
+        console.log(paginate.current.state.selected);
+        }
+    }
+
     const tempShowMessage = (msg,type) => {
 
         (type === 'suc')?setSucMessage(msg):setErrMessage(msg);
@@ -290,25 +307,33 @@ const Series = () => {
                             </div>)
                         })}
                 </div>
-                {(inputMovie.current.value === '')?<nav aria-label="Page navigation example" className="mt-4">
+
+                <nav aria-label="Page navigation example" className="mt-4">
                     <ul className="pagination justify-content-center">
-                        <li className="page-item mx-2">
-                            <a className="page-link hideBorder" aria-label="Previous" onClick={() => {if(currentPage > 1) setCurrentPage(currentPage - 1)}}>
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                                <li className="page-item"><a className="page-link mx-2" style={((currentPage === 1)?paginationStyle:{})} onClick={() => setCurrentPage(1)}>1</a></li>
-                                <li className="page-item"><a className="page-link mx-2" style={((currentPage === 2)?paginationStyle:{})} onClick={() => setCurrentPage(2)}>2</a></li>
-                                <li className="page-item"><a className="page-link mx-2" style={((currentPage === 3)?paginationStyle:{})} onClick={() => setCurrentPage(3)}>3</a></li>
-                                <li className="page-item"><a className="page-link mx-2" style={((currentPage === 4)?paginationStyle:{})} onClick={() => setCurrentPage(4)}>4</a></li>
-                                <li className="page-item"><a className="page-link mx-2" style={((currentPage === 5)?paginationStyle:{})} onClick={() => setCurrentPage(5)}>5</a></li>
-                        <li className="page-item mx-2">
-                            <a className="page-link hideBorder" aria-label="Next" onClick={() => {if(currentPage < 5) setCurrentPage(currentPage + 1)}}>
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
+                        <AiOutlineVerticalRight className='btnClassName mr-2' onClick={() => handlePageChanging(1)} />
+                        <AiOutlineLeft className='btnClassName' onClick={() => handlePageChanging(currentPage - 1)} />
+                    <ReactPaginate
+                            ref={paginate} 
+                            pageCount={pageCount} 
+                            pageRangeDisplayed={2} 
+                            marginPagesDisplayed={2}
+
+                            previousLabel={''}
+                            nextLabel={''}
+
+                            breakClassName={'bClassName'}
+                            previousClassName={'pClassName'}
+                            nextClassName={'nClassName'}
+
+                            activeClassName={'activeClassName'}
+                            onPageChange={handleChangePage}
+                             />
+                             <AiOutlineRight className='btnClassName' onClick={() => handlePageChanging(currentPage + 1)} />
+                        <AiOutlineVerticalLeft className='btnClassName ml-2' onClick={() => handlePageChanging(pageCount)} />
+
                     </ul>
-                </nav>:''}
+                    
+                </nav>
                 
             </div>
         </div>

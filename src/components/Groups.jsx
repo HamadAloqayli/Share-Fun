@@ -6,6 +6,7 @@ import {BsArrowLeft} from 'react-icons/bs';
 import {TiDelete} from 'react-icons/ti';
 import explore from '../img/explore.png';
 import { v4 as uuidv4 } from 'uuid';
+import Spinner from 'react-bootstrap/Spinner';
 
 const Groups = () => {
 
@@ -105,7 +106,7 @@ const Groups = () => {
       }
 
 
-      const addGroup = () => {
+      const addGroup = async () => {
 
         setLoadingData(true);
         let gName = groupName.current.value.trim();
@@ -115,7 +116,7 @@ const Groups = () => {
             if(groups.length === 0)
             {
                 console.log(user.uid);
-                firestore.collection("Groups").add({
+               await firestore.collection("Groups").add({
                     name: gName,
                     createdBy: user.uid,
                     createdAt: new Date().getTime()
@@ -146,14 +147,14 @@ const Groups = () => {
 
                 if(!found.includes(true))
                 {
-                    firestore.collection("Groups").add({
+                   await firestore.collection("Groups").add({
                         name: gName,
                         createdBy: user.uid,
                         createdAt: new Date().getTime()
                     })
                     .then((docRef) => {
                         
-                        firestore.collection('Groups').doc(docRef.id).collection('users').doc(user.uid).set({
+                       firestore.collection('Groups').doc(docRef.id).collection('users').doc(user.uid).set({
                             username: userData.username
                         }).then(res => {console.log(res);tempShowMessage('Group added successfuly','suc');})
                         .catch(res => {console.log(res);tempShowMessage('somthing went wrong!','err');});
@@ -298,7 +299,7 @@ const Groups = () => {
 
 
       if(loading)
-        return <h1>Loading ...</h1>
+        return   <Spinner animation="border" variant="success" />
 
 
         if(!user)
@@ -357,7 +358,7 @@ const Groups = () => {
                                                     </div>
                                         </div>
                                   </div>
-                                            )):<h1>loading...</h1>}
+                                            )):<Spinner animation="border" variant="success" />}
 
                         <div className="col my-4 d-flex justify-content-center">
                             <div className="groupCardHolder">
