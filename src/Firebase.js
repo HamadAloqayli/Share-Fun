@@ -20,4 +20,20 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 export const storage = firebase.storage();
 
+// offline data
+firestore.enablePersistence()
+.then(res => {
+  console.log(res);
+})
+.catch(err => {
+  if(err.code === 'failed-precondition')
+  {
+    console.log('multiple tabs open at once');
+  }
+  else if(err.code === 'unimplemented')
+  {
+    console.log('lack of browser support');
+  }
+});
+
 export default firebase;

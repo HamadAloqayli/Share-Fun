@@ -31,14 +31,15 @@ function App() {
     auth.onAuthStateChanged((user) => {
       if(user)
       {
-
           setUser(user);
           getUserData(user.uid);
+          sessionStorage.setItem('id',user.uid);
       }
       else
       {
           setUser(null);
           setUserData({});
+          sessionStorage.setItem('id','');
       }
     });
   }
@@ -60,7 +61,6 @@ function App() {
     });
 
   }
-
 
   return (
     <userContext.Provider value={{user,setUser,userData,setUserData,getUserData,firebase,auth,firestore,storage,selection,setSelection}}>

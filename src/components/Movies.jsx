@@ -191,7 +191,7 @@ const Movies = () => {
 
     const addToFavorite = (movie) => {
     
-        if(user)
+        if(user || sessionStorage.getItem('id').length > 0)
         {
             firestore.collection('Users').doc(user.uid).collection('movies').where('id','==',movie.id).get()
             .then(res => {
@@ -246,9 +246,6 @@ const Movies = () => {
             setErrMessage('');
         },5000);
     }
-
-    if(loading)
-        return <Loading />
     
     return (
         <div className="moviesHero text-center">

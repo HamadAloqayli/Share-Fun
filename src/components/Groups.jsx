@@ -302,7 +302,7 @@ const Groups = () => {
         return   <Spinner animation="border" variant="success" />
 
 
-        if(!user)
+        if(!user || sessionStorage.getItem('id').length === 0)
         return <Redirect to="/" />
 
         return ( 

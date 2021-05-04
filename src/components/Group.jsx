@@ -37,7 +37,7 @@ const Group = (props) => {
         return <h1>Loading ...</h1>
 
     
-     if(!user)
+     if(!user || sessionStorage.getItem('id').length === 0)
         return <Redirect to="/" />
 
 

@@ -47,7 +47,7 @@ const Login = () => {
 
     }
 
-    if(user)
+    if(user || sessionStorage.getItem('id').length > 0)
         return <Redirect to='/' />
 
     return ( 
