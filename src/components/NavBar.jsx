@@ -19,7 +19,7 @@ const NavBar = () => {
 
     const pathName = window.location.pathname.substr(1);
 
-    if(!user || sessionStorage.getItem('id').length === 0)
+    if(!user || sessionStorage.getItem('id') !== null && sessionStorage.getItem('id').length === 0)
     return (
 
 
@@ -65,7 +65,7 @@ const NavBar = () => {
 
 
 
-     if(user || sessionStorage.getItem('id').length > 0)
+     if(user || sessionStorage.getItem('id') !== null && sessionStorage.getItem('id').length > 0)
      return (
         <nav className="navbar navbar-expand-md sticky-top">
         <Link className="navbar-brand ml-4" to="/"><img src={logo} alt=""/></Link>

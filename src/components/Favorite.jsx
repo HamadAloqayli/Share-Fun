@@ -36,7 +36,7 @@ const Favorite = () => {
         return <h1>Loading ...</h1>
 
     
-     if(!user || sessionStorage.getItem('id').length === 0)
+     if(!user || sessionStorage.getItem('id') !== null && sessionStorage.getItem('id').length === 0)
         return <Redirect to="/" />
 
 
