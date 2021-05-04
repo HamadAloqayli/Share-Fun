@@ -1,0 +1,17 @@
+{
+  "short_name": "Share Fun",
+  "name": "Share Fun",
+  "purpose": "any maskable",
+  "icons": [
+      {
+          "src": "/logoIcon.png",
+          "type": "image/png",
+          "sizes": "1024x1024",
+          "purpose":"any maskable"
+      }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
